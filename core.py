@@ -1,9 +1,8 @@
 """
-Generates 1-5 Italian Lotto tickets and prints them.
+Generates 1-5 Italian Lotto tickets and prints them, then simulates an extraction and declares the winning tickets.
 """
 
 from objects import *
-from functions import *
 
 def main():
 	print('This program randomly generates 1-5 Italian Lotto tickets of the chosen type and prints them.')
@@ -47,7 +46,6 @@ def main():
 					n_numbers = 0
 				if n_numbers in range(1, 11):
 					valid = True
-					numbers = gen_ran_num(n_numbers)
 				else:
 					print('Invalid data. Please try again.')
 
@@ -64,13 +62,20 @@ def main():
 				else:
 					print('Invalid data. Please try again.')
 			# collect user preferences for each ticket in a list
-			ticket_data.append([target, numbers, ruota])
+			ticket_data.append([target, n_numbers, ruota])
 		# generate and print the tickets
 		tickets = []
 		for t in ticket_data:
 			ticket = Ticket(t[0], t[1], t[2])
-			print(ticket)
 			tickets.append(ticket)
+			print(ticket)
+		# generate and print the extraction results
+		extraction = Extraction()
+		print(extraction)
+		for t in tickets:
+			extracted = extraction.results[t.ruota]
+			if t.win(extracted):
+				print("Ticket number " + str(tickets.index(t) + 1) + " is a winning ticket!")
 
 if __name__ == "__main__":
 	main()
