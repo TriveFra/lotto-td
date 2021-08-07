@@ -1,6 +1,7 @@
 # Lotto-td
 
 Lotto is a program that simulates Italian Lotto (a game similar to Bingo).
+It is created as part of the TomorrowDevs Python Learning Path.
 The different branches represent subsequent levels of development,
 LP-1 being the simplest version, LP-3 the latest and feature-richest.
 
